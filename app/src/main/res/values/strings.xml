@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">What2Watch</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="txt_home">Home</string>
+    <string name="txt_search">Search</string>
+    <string name="txt_watchlist">Watchlist</string>
+
+    <string name="txt_all">All</string>
+    <string name="txt_movies">Movies</string>
+    <string name="txt_tv_shows">TV Shows</string>
+
+    <string name="txt_overview">Overview</string>
+    <string name="txt_play_trailer">Play Trailer</string>
+    <string name="txt_add_to_watchlist">Add To Watchlist</string>
+    <string name="txt_remove_from_watchlist">Remove From Watchlist</string>
+    <string name="txt_share">Share</string>
+    <string name="txt_back">Back</string>
+    <string name="txt_msg_search_welcome">What are you looking for?</string>
+    <string name="txt_msg_search_welcome_desc">You can search your favorite movies and tv shows or find similar results</string>
+    <string name="app_name_2">What2Watch</string>
+
+    <string name="txt_msg_empty_data">Empty Data</string>
+    <string name="txt_msg_no_results">No Results</string>
+    <string name="txt_msg_no_watchlist_multi">There are no movies or tv shows in your watchlist</string>
+    <string name="txt_msg_no_watchlist_movies">There are no movies in your watchlist</string>
+    <string name="txt_msg_no_watchlist_tv_shows">There are no tv shows in your watchlist</string>
+    <string name="txt_msg_no_trending_multi">There is no trending %s or tv shows for this week</string>
+    <string name="txt_msg_no_upcoming_multi">There is no upcoming %s for now</string>
+    <string name="txt_msg_no_popular_multi">There is no popular %s for now</string>
+    <string name="txt_msg_no_top_rated_multi">There is no top rated %s for now</string>
+    <string name="txt_msg_no_now_playing_movies">There is no movies playing in cinema for now</string>
+
+    <string name="txt_trending_this_week">Trending This Week</string>
+    <string name="txt_now_playing_movies">Now Playing Movies</string>
+    <string name="txt_trending_movies">Trending Movies</string>
+    <string name="txt_upcoming_movies">Upcoming Movies</string>
+    <string name="txt_popular_movies">Popular Movies</string>
+    <string name="txt_top_rated_movies">Top Rated Movies</string>
+    <string name="txt_popular_tv_shows">Popular TV Shows</string>
+    <string name="txt_top_rated_tv_shows">Top Rated TV Shows</string>
+    <string name="txt_retry">Retry</string>
+    <string name="txt_watchlist_categories">Watchlist Categories:</string>
+    <string name="txt_msg_unable_to_load_newest_data">Unable to load the newest %s data at this time.\nPlease check your internet connection and try again.</string>
+    <string name="txt_msg_unable_to_load_data">Unable to load the data at this time.\nPlease check your internet connection and try again.</string>
+    <string name="txt_msg_trailer_unavailable">Trailer for this movie or tv show is unavailable for now.</string>
+
+    <string name="txt_share_movie_detail">🎬 Just explored the details of a movie called \"%s\" on What2Watch!\n\n🍿 Check out this awesome app for all the latest Movie and TV Show information.\n\n📺 #What2Watch #MovieAddict</string>
+    <string name="txt_share_tv_show_detail">🎬 Just explored the details of a tv show called \"%s\" on What2Watch!\n\n🍿 Check out this awesome app for all the latest Movie and TV Show information.\n\n📺 #What2Watch #TVShowAddict</string>
+</resources>

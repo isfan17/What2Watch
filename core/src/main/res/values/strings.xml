@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="txt_cover">Cover</string>
+    <string name="txt_retry">Retry</string>
+    <string name="txt_illustration">Illustration</string>
+    <string name="txt_title">Title</string>
+    <string name="txt_see_more">See More</string>
+</resources>
