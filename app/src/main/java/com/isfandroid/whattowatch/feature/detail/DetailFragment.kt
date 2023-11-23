@@ -18,6 +18,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.isfandroid.whattowatch.R
+import com.isfandroid.whattowatch.core.data.Status
 import com.isfandroid.whattowatch.core.domain.model.Multi
 import com.isfandroid.whattowatch.databinding.FragmentDetailBinding
 import com.isfandroid.whattowatch.databinding.PopupYoutubePlayerBinding
@@ -92,10 +93,10 @@ class DetailFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 launch {
                     viewModel.multiDetail.collectLatest {
                         when (it) {
-                            is com.isfandroid.whattowatch.core.data.Status.Loading -> {
+                            is Status.Loading -> {
                                 showPageLoading(true)
                             }
-                            is com.isfandroid.whattowatch.core.data.Status.Error -> {
+                            is Status.Error -> {
                                 showPageLoading(false)
                                 if (binding.tvTitleDetail.text == null || binding.tvTitleDetail.text == "") {
                                     binding.error.root.visibility = View.VISIBLE
@@ -109,7 +110,7 @@ class DetailFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                                     showToast(getString(R.string.txt_msg_unable_to_load_newest_data, "Detail"))
                                 }
                             }
-                            is com.isfandroid.whattowatch.core.data.Status.Success -> {
+                            is Status.Success -> {
                                 showPageLoading(false)
                                 binding.error.root.visibility = View.GONE
                                 binding.svContent.visibility = View.VISIBLE
@@ -140,12 +141,12 @@ class DetailFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                     viewModel.trailers.collectLatest {
                         if (it != null) {
                             when (it) {
-                                is com.isfandroid.whattowatch.core.data.Status.Loading -> showTrailerLoading(true)
-                                is com.isfandroid.whattowatch.core.data.Status.Error -> {
+                                is Status.Loading -> showTrailerLoading(true)
+                                is Status.Error -> {
                                     showTrailerLoading(false)
                                     showToast(getString(R.string.txt_msg_unable_to_load_data))
                                 }
-                                is com.isfandroid.whattowatch.core.data.Status.Success -> {
+                                is Status.Success -> {
                                     showTrailerLoading(false)
                                     if (!it.data.isNullOrEmpty()) {
                                         val trailerVideo = it.data!!.find { trailer ->

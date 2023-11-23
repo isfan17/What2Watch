@@ -8,7 +8,6 @@ import com.isfandroid.whattowatch.core.data.source.local.LocalDataSource
 import com.isfandroid.whattowatch.core.data.source.paging.MultiPagingSource
 import com.isfandroid.whattowatch.core.data.source.remote.RemoteDataSource
 import com.isfandroid.whattowatch.core.data.source.remote.network.ApiResponse
-import com.isfandroid.whattowatch.core.data.source.remote.response.general.MultiResponse
 import com.isfandroid.whattowatch.core.domain.model.Multi
 import com.isfandroid.whattowatch.core.domain.model.Trailer
 import com.isfandroid.whattowatch.core.domain.repository.IAppRepository
@@ -27,10 +26,6 @@ class AppRepository(
     /** region General **/
     override fun getTrendingThisWeek(): Flow<Status<List<Multi>>> = flow {
         emit(Status.Loading())
-
-        // Load & Emit Data from Local
-        val localData = localDataSource.getTrendingMulti().firstOrNull()
-        if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
 
         when ( val apiResponse = remoteDataSource.getTrendingThisWeek().first() ) {
             is ApiResponse.Success -> {
@@ -52,6 +47,10 @@ class AppRepository(
                 emit(Status.Success(mappedToDomain))
             }
             is ApiResponse.Error -> {
+                // Load & Emit Data from Local
+                val localData = localDataSource.getTrendingMulti().firstOrNull()
+                if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
+
                 emit(Status.Error(apiResponse.errorMessage))
             }
             is ApiResponse.Empty -> {
@@ -60,7 +59,7 @@ class AppRepository(
         }
     }
 
-    override fun getTrendingThisWeekPaging(): Flow<PagingData<MultiResponse>> {
+    override fun getTrendingThisWeekPaging(): Flow<PagingData<Multi>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 5
@@ -74,15 +73,7 @@ class AppRepository(
         ).flow
     }
 
-    override fun getOnWatchlistMulti(): Flow<Status<List<Multi>>> = flow {
-        emit(Status.Loading())
-
-        // Load & Emit Data from Local
-        val localData = localDataSource.getOnWatchlistMulti().firstOrNull()
-        if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
-    }
-
-    override fun searchMultiPaging(query: String): Flow<PagingData<MultiResponse>> {
+    override fun searchMultiPaging(query: String): Flow<PagingData<Multi>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 5
@@ -95,6 +86,14 @@ class AppRepository(
                 )
             }
         ).flow
+    }
+
+    override fun getOnWatchlistMulti(): Flow<Status<List<Multi>>> = flow {
+        emit(Status.Loading())
+
+        // Load & Emit Data from Local
+        val localData = localDataSource.getOnWatchlistMulti().firstOrNull()
+        if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
     }
 
     override fun setMultiOnWatchlist(id: Int, mediaType: String): Flow<String> = flow {
@@ -120,10 +119,6 @@ class AppRepository(
     override fun getNowPlayingMovies(): Flow<Status<List<Multi>>> = flow {
         emit(Status.Loading())
 
-        // Load & Emit Data from Local
-        val localData = localDataSource.getNowPlayingMovies().firstOrNull()
-        if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
-
         when ( val apiResponse = remoteDataSource.getNowPlayingMovies().first() ) {
             is ApiResponse.Success -> {
                 // Insert data to local after successfully load data from network
@@ -145,6 +140,10 @@ class AppRepository(
                 emit(Status.Success(mappedToDomain))
             }
             is ApiResponse.Error -> {
+                // Load & Emit Data from Local
+                val localData = localDataSource.getNowPlayingMovies().firstOrNull()
+                if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
+
                 emit(Status.Error(apiResponse.errorMessage))
             }
             is ApiResponse.Empty -> {
@@ -155,10 +154,6 @@ class AppRepository(
 
     override fun getUpcomingMovies(): Flow<Status<List<Multi>>> = flow {
         emit(Status.Loading())
-
-        // Load & Emit Data from Local
-        val localData = localDataSource.getUpcomingMovies().firstOrNull()
-        if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
 
         when ( val apiResponse = remoteDataSource.getUpcomingMovies().first() ) {
             is ApiResponse.Success -> {
@@ -181,6 +176,10 @@ class AppRepository(
                 emit(Status.Success(mappedToDomain))
             }
             is ApiResponse.Error -> {
+                // Load & Emit Data from Local
+                val localData = localDataSource.getUpcomingMovies().firstOrNull()
+                if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
+
                 emit(Status.Error(apiResponse.errorMessage))
             }
             is ApiResponse.Empty -> {
@@ -191,10 +190,6 @@ class AppRepository(
 
     override fun getPopularMovies(): Flow<Status<List<Multi>>> = flow {
         emit(Status.Loading())
-
-        // Load & Emit Data from Local
-        val localData = localDataSource.getPopularMovies().firstOrNull()
-        if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
 
         when ( val apiResponse = remoteDataSource.getPopularMovies().first() ) {
             is ApiResponse.Success -> {
@@ -217,6 +212,10 @@ class AppRepository(
                 emit(Status.Success(mappedToDomain))
             }
             is ApiResponse.Error -> {
+                // Load & Emit Data from Local
+                val localData = localDataSource.getPopularMovies().firstOrNull()
+                if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
+
                 emit(Status.Error(apiResponse.errorMessage))
             }
             is ApiResponse.Empty -> {
@@ -227,10 +226,6 @@ class AppRepository(
 
     override fun getTopRatedMovies(): Flow<Status<List<Multi>>> = flow {
         emit(Status.Loading())
-
-        // Load & Emit Data from Local
-        val localData = localDataSource.getTopRatedMovies().firstOrNull()
-        if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
 
         when ( val apiResponse = remoteDataSource.getTopRatedMovies().first() ) {
             is ApiResponse.Success -> {
@@ -253,6 +248,10 @@ class AppRepository(
                 emit(Status.Success(mappedToDomain))
             }
             is ApiResponse.Error -> {
+                // Load & Emit Data from Local
+                val localData = localDataSource.getTopRatedMovies().firstOrNull()
+                if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
+
                 emit(Status.Error(apiResponse.errorMessage))
             }
             is ApiResponse.Empty -> {
@@ -261,7 +260,7 @@ class AppRepository(
         }
     }
 
-    override fun getNowPlayingMoviesPaging(): Flow<PagingData<MultiResponse>> {
+    override fun getNowPlayingMoviesPaging(): Flow<PagingData<Multi>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 5
@@ -275,7 +274,7 @@ class AppRepository(
         ).flow
     }
 
-    override fun getUpcomingMoviesPaging(): Flow<PagingData<MultiResponse>> {
+    override fun getUpcomingMoviesPaging(): Flow<PagingData<Multi>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 5
@@ -289,7 +288,7 @@ class AppRepository(
         ).flow
     }
 
-    override fun getPopularMoviesPaging(): Flow<PagingData<MultiResponse>> {
+    override fun getPopularMoviesPaging(): Flow<PagingData<Multi>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 5
@@ -303,7 +302,7 @@ class AppRepository(
         ).flow
     }
 
-    override fun getTopRatedMoviesPaging(): Flow<PagingData<MultiResponse>> {
+    override fun getTopRatedMoviesPaging(): Flow<PagingData<Multi>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 5
@@ -328,10 +327,6 @@ class AppRepository(
     override fun getMovieDetail(movieId: Int): Flow<Status<Multi>> = flow {
         emit(Status.Loading())
 
-        // Load & Emit Data from Local
-        val localData = localDataSource.getMultiById(movieId).firstOrNull()
-        if (localData != null) emit(Status.Success( DataMapper.mapMultiEntityToDomain(localData) ))
-
         when ( val apiResponse = remoteDataSource.getMovieDetail(movieId).first() ) {
             is ApiResponse.Success -> {
                 // Insert data to local after successfully load data from network
@@ -351,6 +346,10 @@ class AppRepository(
                 emit(Status.Success(mappedToDomain))
             }
             is ApiResponse.Error -> {
+                // Load & Emit Data from Local
+                val localData = localDataSource.getMultiById(movieId).firstOrNull()
+                if (localData != null) emit(Status.Success( DataMapper.mapMultiEntityToDomain(localData) ))
+
                 emit(Status.Error(apiResponse.errorMessage))
             }
             is ApiResponse.Empty -> {
@@ -394,10 +393,6 @@ class AppRepository(
     override fun getPopularTVShows(): Flow<Status<List<Multi>>> = flow {
         emit(Status.Loading())
 
-        // Load & Emit Data from Local
-        val localData = localDataSource.getPopularTVShows().firstOrNull()
-        if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
-
         when ( val apiResponse = remoteDataSource.getPopularTVShows().first() ) {
             is ApiResponse.Success -> {
                 // Insert data to local after successfully load data from network
@@ -419,6 +414,10 @@ class AppRepository(
                 emit(Status.Success(mappedToDomain))
             }
             is ApiResponse.Error -> {
+                // Load & Emit Data from Local
+                val localData = localDataSource.getPopularTVShows().firstOrNull()
+                if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
+
                 emit(Status.Error(apiResponse.errorMessage))
             }
             is ApiResponse.Empty -> {
@@ -429,10 +428,6 @@ class AppRepository(
 
     override fun getTopRatedTVShows(): Flow<Status<List<Multi>>> = flow {
         emit(Status.Loading())
-
-        // Load & Emit Data from Local
-        val localData = localDataSource.getTopRatedTVShows().firstOrNull()
-        if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
 
         when ( val apiResponse = remoteDataSource.getTopRatedTVShows().first() ) {
             is ApiResponse.Success -> {
@@ -455,6 +450,10 @@ class AppRepository(
                 emit(Status.Success(mappedToDomain))
             }
             is ApiResponse.Error -> {
+                // Load & Emit Data from Local
+                val localData = localDataSource.getTopRatedTVShows().firstOrNull()
+                if (localData != null) emit(Status.Success(localData.map { DataMapper.mapMultiEntityToDomain(it) }))
+
                 emit(Status.Error(apiResponse.errorMessage))
             }
             is ApiResponse.Empty -> {
@@ -463,7 +462,7 @@ class AppRepository(
         }
     }
 
-    override fun getPopularTVShowsPaging(): Flow<PagingData<MultiResponse>> {
+    override fun getPopularTVShowsPaging(): Flow<PagingData<Multi>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 5
@@ -477,7 +476,7 @@ class AppRepository(
         ).flow
     }
 
-    override fun getTopRatedTVShowsPaging(): Flow<PagingData<MultiResponse>> {
+    override fun getTopRatedTVShowsPaging(): Flow<PagingData<Multi>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 5
@@ -502,10 +501,6 @@ class AppRepository(
     override fun getTVShowDetail(tvId: Int): Flow<Status<Multi>> = flow {
         emit(Status.Loading())
 
-        // Load & Emit Data from Local
-        val localData = localDataSource.getMultiById(tvId).firstOrNull()
-        if (localData != null) emit(Status.Success( DataMapper.mapMultiEntityToDomain(localData) ))
-
         when ( val apiResponse = remoteDataSource.getTVShowDetail(tvId).first() ) {
             is ApiResponse.Success -> {
                 // Insert data to local after successfully load data from network
@@ -523,6 +518,10 @@ class AppRepository(
                 emit(Status.Success(mappedToDomain))
             }
             is ApiResponse.Error -> {
+                // Load & Emit Data from Local
+                val localData = localDataSource.getMultiById(tvId).firstOrNull()
+                if (localData != null) emit(Status.Success( DataMapper.mapMultiEntityToDomain(localData) ))
+
                 emit(Status.Error(apiResponse.errorMessage))
             }
             is ApiResponse.Empty -> {

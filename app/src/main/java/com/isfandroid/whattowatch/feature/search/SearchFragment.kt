@@ -70,9 +70,7 @@ class SearchFragment : Fragment() {
             // Search Results RV Setup
             rvItems.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             rvItems.adapter = multiAdapter.withLoadStateFooter(
-                footer = LoadingStateAdapter {
-                    multiAdapter.retry()
-                }
+                footer = LoadingStateAdapter { multiAdapter.retry() }
             )
 
             // Search Results Paging Setup

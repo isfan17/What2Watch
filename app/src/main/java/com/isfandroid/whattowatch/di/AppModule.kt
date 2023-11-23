@@ -14,7 +14,6 @@ import com.isfandroid.whattowatch.feature.detail.DetailViewModel
 import com.isfandroid.whattowatch.feature.home.HomeViewModel
 import com.isfandroid.whattowatch.feature.list.ListViewModel
 import com.isfandroid.whattowatch.feature.search.SearchViewModel
-import com.isfandroid.whattowatch.feature.watchlist.WatchlistViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -29,7 +28,6 @@ val useCaseModule = module {
 val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel { SearchViewModel(get()) }
-    viewModel { WatchlistViewModel(get()) }
     viewModel { DetailViewModel(get()) }
     viewModel { ListViewModel(get()) }
 }

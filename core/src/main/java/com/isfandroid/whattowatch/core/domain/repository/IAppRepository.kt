@@ -2,7 +2,6 @@ package com.isfandroid.whattowatch.core.domain.repository
 
 import androidx.paging.PagingData
 import com.isfandroid.whattowatch.core.data.Status
-import com.isfandroid.whattowatch.core.data.source.remote.response.general.MultiResponse
 import com.isfandroid.whattowatch.core.domain.model.Multi
 import com.isfandroid.whattowatch.core.domain.model.Trailer
 import kotlinx.coroutines.flow.Flow
@@ -10,9 +9,9 @@ import kotlinx.coroutines.flow.Flow
 interface IAppRepository {
 
     fun getTrendingThisWeek(): Flow<Status<List<Multi>>>
-    fun getTrendingThisWeekPaging(): Flow<PagingData<MultiResponse>>
+    fun getTrendingThisWeekPaging(): Flow<PagingData<Multi>>
     fun getOnWatchlistMulti(): Flow<Status<List<Multi>>>
-    fun searchMultiPaging(query: String): Flow<PagingData<MultiResponse>>
+    fun searchMultiPaging(query: String): Flow<PagingData<Multi>>
     fun setMultiOnWatchlist(id: Int, mediaType: String): Flow<String>
     fun removeMultiFromWatchlist(id: Int, mediaType: String): Flow<String>
 
@@ -24,10 +23,10 @@ interface IAppRepository {
     fun getMovieDetail(movieId: Int): Flow<Status<Multi>>
     fun getMovieTrailers(movieId: Int): Flow<Status<List<Trailer>>>
 
-    fun getNowPlayingMoviesPaging(): Flow<PagingData<MultiResponse>>
-    fun getUpcomingMoviesPaging(): Flow<PagingData<MultiResponse>>
-    fun getPopularMoviesPaging(): Flow<PagingData<MultiResponse>>
-    fun getTopRatedMoviesPaging(): Flow<PagingData<MultiResponse>>
+    fun getNowPlayingMoviesPaging(): Flow<PagingData<Multi>>
+    fun getUpcomingMoviesPaging(): Flow<PagingData<Multi>>
+    fun getPopularMoviesPaging(): Flow<PagingData<Multi>>
+    fun getTopRatedMoviesPaging(): Flow<PagingData<Multi>>
 
     fun getPopularTVShows(): Flow<Status<List<Multi>>>
     fun getTopRatedTVShows(): Flow<Status<List<Multi>>>
@@ -35,6 +34,6 @@ interface IAppRepository {
     fun getTVShowDetail(tvId: Int): Flow<Status<Multi>>
     fun getTVShowTrailers(tvId: Int): Flow<Status<List<Trailer>>>
 
-    fun getPopularTVShowsPaging(): Flow<PagingData<MultiResponse>>
-    fun getTopRatedTVShowsPaging(): Flow<PagingData<MultiResponse>>
+    fun getPopularTVShowsPaging(): Flow<PagingData<Multi>>
+    fun getTopRatedTVShowsPaging(): Flow<PagingData<Multi>>
 }

@@ -18,7 +18,6 @@ import com.isfandroid.whattowatch.databinding.FragmentHomeBinding
 import com.isfandroid.whattowatch.feature.adapter.HomeFragmentsAdapter
 import com.isfandroid.whattowatch.feature.adapter.MultiSmallAdapter
 import com.isfandroid.whattowatch.core.utils.Constants
-import com.isfandroid.whattowatch.core.utils.Helper.showToast
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -103,38 +102,50 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
 
+                // Error State
+                launch {
+                    viewModel.hasError.collectLatest {
+                        if (it != null) {
+                            binding.error.tvMessageError.text = getString(R.string.txt_msg_unable_to_load_data)
+                            if (it) binding.error.root.visibility = View.VISIBLE
+                            else binding.error.root.visibility = View.GONE
+                        }
+                    }
+                }
+
                 // Trending Multi
-                viewModel.trendingMulti.collectLatest {
-                    when (it) {
-                        is Status.Loading -> showTrendingMultiLoading(true)
-                        is Status.Error -> {
-                            showTrendingMultiLoading(false)
-                            if (multiAdapter.itemCount == 0) {
+                launch {
+                    viewModel.trendingMulti.collectLatest {
+                        when (it) {
+                            is Status.Loading -> showTrendingMultiLoading(true)
+                            is Status.Error -> {
+                                showTrendingMultiLoading(false)
+                                if (multiAdapter.itemCount == 0) {
+                                    binding.trendingMultiRV.root.visibility = View.GONE
+                                    binding.trendingMultiError.root.visibility = View.VISIBLE
+                                    binding.trendingMultiError.tvDescription.visibility = View.GONE
+                                    binding.trendingMultiError.btnRetry.visibility = View.VISIBLE
+
+                                    binding.trendingMultiError.tvTitle.text = getString(R.string.txt_msg_unable_to_load_newest_data, "Trending")
+                                    binding.trendingMultiError.ivIllustration.setImageResource(R.drawable.illustration_no_connection)
+                                }
+                            }
+                            is Status.Success -> {
+                                showTrendingMultiLoading(false)
+                                binding.trendingMultiRV.root.visibility = View.VISIBLE
+                                binding.trendingMultiError.root.visibility = View.GONE
+                                multiAdapter.submitList(it.data)
+                            }
+                            else -> {
+                                showTrendingMultiLoading(false)
                                 binding.trendingMultiRV.root.visibility = View.GONE
                                 binding.trendingMultiError.root.visibility = View.VISIBLE
-                                binding.trendingMultiError.tvDescription.visibility = View.GONE
-                                binding.trendingMultiError.btnRetry.visibility = View.VISIBLE
-
-                                binding.trendingMultiError.tvTitle.text = getString(R.string.txt_msg_unable_to_load_newest_data, "Trending")
-                                binding.trendingMultiError.ivIllustration.setImageResource(R.drawable.illustration_no_connection)
-                            } else {
-                                showToast(getString(R.string.txt_msg_unable_to_load_newest_data, "Trending"))
+                                binding.trendingMultiError.tvTitle.text = getString(R.string.txt_msg_empty_data)
+                                binding.trendingMultiError.tvDescription.text = getString(R.string.txt_msg_no_trending_multi)
+                                binding.trendingMultiError.btnRetry.visibility = View.GONE
                             }
                         }
-                        is Status.Success -> {
-                            showTrendingMultiLoading(false)
-                            binding.trendingMultiRV.root.visibility = View.VISIBLE
-                            binding.trendingMultiError.root.visibility = View.GONE
-                            multiAdapter.submitList(it.data)
-                        }
-                        else -> {
-                            showTrendingMultiLoading(false)
-                            binding.trendingMultiRV.root.visibility = View.GONE
-                            binding.trendingMultiError.root.visibility = View.VISIBLE
-                            binding.trendingMultiError.tvTitle.text = getString(R.string.txt_msg_empty_data)
-                            binding.trendingMultiError.tvDescription.text = getString(R.string.txt_msg_no_trending_multi)
-                            binding.trendingMultiError.btnRetry.visibility = View.GONE
-                        }
+                        viewModel.checkForErrors()
                     }
                 }
             }
@@ -142,6 +153,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun initClickListener() {
+        binding.error.btnRetryError.setOnClickListener { initData() }
         binding.trendingMultiError.btnRetry.setOnClickListener { viewModel.getTrendingMulti() }
         binding.trendingMultiRV.btnSeeMore.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToListFragment(

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
@@ -66,8 +67,9 @@
     </fragment>
 
     <fragment
+        app:moduleName="watchlist"
         android:id="@+id/watchlistFragment"
-        android:name="com.isfandroid.whattowatch.feature.watchlist.WatchlistFragment"
+        android:name="com.isfandroid.whattowatch.watchlist.ui.WatchlistFragment"
         android:label="fragment_watchlist"
         tools:layout="@layout/fragment_watchlist"
         >
@@ -81,6 +83,7 @@
             app:popExitAnim="@anim/slide_out_right"
             />
     </fragment>
+
     <fragment
         android:id="@+id/listFragment"
         android:name="com.isfandroid.whattowatch.feature.list.ListFragment"

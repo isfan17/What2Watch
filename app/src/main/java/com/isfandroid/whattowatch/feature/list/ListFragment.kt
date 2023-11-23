@@ -10,11 +10,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.isfandroid.whattowatch.R
 import com.isfandroid.whattowatch.databinding.FragmentListBinding
 import com.isfandroid.whattowatch.feature.adapter.paging.MultiLargePagingAdapter
 import com.isfandroid.whattowatch.core.utils.Constants
+import com.isfandroid.whattowatch.feature.adapter.paging.LoadingStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -76,12 +79,65 @@ class ListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
             // Lists RV Setup
             rvItems.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            rvItems.adapter = multiAdapter
+            rvItems.adapter = multiAdapter.withLoadStateFooter(
+                footer = LoadingStateAdapter { multiAdapter.retry() }
+            )
+
+            // Lists Paging Setup
+            multiAdapter.addLoadStateListener { loadState ->
+                // When Search Results is Empty
+                if (loadState.source.refresh is LoadState.NotLoading && loadState.append.endOfPaginationReached && multiAdapter.itemCount < 1) {
+                    // Empty State for Search Results
+                    showListsLoading(false)
+                    binding.empty.root.visibility = View.VISIBLE
+                    binding.empty.btnRetry.visibility = View.GONE
+                    rvItems.visibility = View.GONE
+
+                    binding.empty.tvTitle.text = getString(R.string.txt_msg_no_results)
+                    binding.empty.ivIllustration.setImageResource(R.drawable.illustration_empty_data)
+                } else {
+                    when (loadState.refresh) {
+                        // When Search Results is Loading
+                        is LoadState.Loading -> {
+                            // Loading State for Sticky Search Results
+                            showListsLoading(true)
+                            binding.empty.root.visibility = View.GONE
+                            rvItems.visibility = View.GONE
+                        }
+                        else -> {
+                            // Success State for Search Results
+                            showListsLoading(false)
+                            binding.empty.root.visibility = View.GONE
+                            rvItems.visibility = View.VISIBLE
+
+                            val error = when {
+                                loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+                                loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+                                loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+                                else -> null
+                            }
+                            error?.let {
+                                // Error State for Search Results
+                                showListsLoading(false)
+                                if (multiAdapter.itemCount == 0) {
+                                    binding.empty.root.visibility = View.VISIBLE
+                                    binding.empty.btnRetry.visibility = View.VISIBLE
+                                    rvItems.visibility = View.GONE
+
+                                    binding.empty.tvTitle.text = getString(R.string.txt_msg_unable_to_load_data)
+                                    binding.empty.ivIllustration.setImageResource(R.drawable.illustration_no_connection)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
     private fun initClickListener() {
         binding.btnBack.setOnClickListener { findNavController().navigateUp() }
+        binding.empty.btnRetry.setOnClickListener { initData() }
     }
 
     private fun initData() {
@@ -105,6 +161,16 @@ class ListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                     if (it != null) multiAdapter.submitData(lifecycle, it)
                 }
             }
+        }
+    }
+
+    private fun showListsLoading(state: Boolean) {
+        if (state) {
+            binding.listsShimmer.root.visibility = View.VISIBLE
+            binding.listsShimmer.root.startShimmer()
+        } else {
+            binding.listsShimmer.root.stopShimmer()
+            binding.listsShimmer.root.visibility = View.GONE
         }
     }
 

@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.isfandroid.core.databinding.ItemMultiLargeBinding
 import com.isfandroid.whattowatch.R
-import com.isfandroid.whattowatch.core.data.source.remote.response.general.MultiResponse
+import com.isfandroid.whattowatch.core.domain.model.Multi
 import com.isfandroid.whattowatch.core.utils.Constants
 
 class MultiLargePagingAdapter(
-    val onItemClicked: (MultiResponse) -> Unit
-): PagingDataAdapter<MultiResponse, MultiLargePagingAdapter.MultiViewHolder>(DIFF_CALLBACK){
+    val onItemClicked: (Multi) -> Unit
+): PagingDataAdapter<Multi, MultiLargePagingAdapter.MultiViewHolder>(DIFF_CALLBACK){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MultiViewHolder {
         val binding = ItemMultiLargeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -26,7 +26,7 @@ class MultiLargePagingAdapter(
 
     inner class MultiViewHolder(private val binding: ItemMultiLargeBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: MultiResponse) {
+        fun bind(data: Multi) {
             with(binding) {
                 root.setOnClickListener { onItemClicked.invoke(data) }
 
@@ -47,12 +47,12 @@ class MultiLargePagingAdapter(
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MultiResponse>() {
-            override fun areItemsTheSame(oldItem: MultiResponse, newItem: MultiResponse): Boolean {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Multi>() {
+            override fun areItemsTheSame(oldItem: Multi, newItem: Multi): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: MultiResponse, newItem: MultiResponse): Boolean {
+            override fun areContentsTheSame(oldItem: Multi, newItem: Multi): Boolean {
                 return oldItem.id == newItem.id
             }
         }

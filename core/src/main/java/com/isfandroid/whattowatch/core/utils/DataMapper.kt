@@ -52,6 +52,23 @@ object DataMapper {
         episodeRunTime = null,
     )
 
+    fun mapMultiResponseToDomain(input: MultiResponse) = Multi(
+        id = input.id,
+        mediaType = input.mediaType,
+        backdropPath = input.backdropPath,
+        posterPath = input.posterPath,
+        title = input.title,
+        name = input.name,
+        overview = input.overview,
+        releaseDate = input.releaseDate,
+        firstAirDate = input.firstAirDate,
+        voteAverage = input.voteAverage,
+        tagline = null,
+        genres = null,
+        runtime = null,
+        episodeRunTime = null,
+    )
+
     fun mapMovieDetailResponseToEntity(input: MovieDetailResponse) = MultiEntity(
         id = input.id,
         mediaType = Constants.MEDIA_TYPE_MOVIE,

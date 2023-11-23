@@ -17,7 +17,6 @@ import com.isfandroid.whattowatch.feature.adapter.MultiSmallAdapter
 import com.isfandroid.whattowatch.feature.home.HomeFragmentDirections
 import com.isfandroid.whattowatch.feature.home.HomeViewModel
 import com.isfandroid.whattowatch.core.utils.Constants
-import com.isfandroid.whattowatch.core.utils.Helper.showToast
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -122,8 +121,6 @@ class TVShowsFragment: Fragment() {
 
                                     binding.popularError.tvTitle.text = getString(R.string.txt_msg_unable_to_load_newest_data, "Popular TV Shows")
                                     binding.popularError.ivIllustration.setImageResource(R.drawable.illustration_no_connection)
-                                } else {
-                                    showToast(getString(R.string.txt_msg_unable_to_load_newest_data, "Popular TV Shows"))
                                 }
                             }
                             is Status.Success -> {
@@ -143,6 +140,7 @@ class TVShowsFragment: Fragment() {
                                 binding.popularError.ivIllustration.setImageResource(R.drawable.illustration_empty_data)
                             }
                         }
+                        viewModel.checkForErrors()
                     }
                 }
 
@@ -161,8 +159,6 @@ class TVShowsFragment: Fragment() {
 
                                     binding.topRatedError.tvTitle.text = getString(R.string.txt_msg_unable_to_load_newest_data, "Top Rated TV Shows")
                                     binding.topRatedError.ivIllustration.setImageResource(R.drawable.illustration_no_connection)
-                                } else {
-                                    showToast(getString(R.string.txt_msg_unable_to_load_newest_data, "Top Rated TV Shows"))
                                 }
                             }
                             is Status.Success -> {
@@ -182,6 +178,7 @@ class TVShowsFragment: Fragment() {
                                 binding.topRatedError.ivIllustration.setImageResource(R.drawable.illustration_empty_data)
                             }
                         }
+                        viewModel.checkForErrors()
                     }
                 }
             }

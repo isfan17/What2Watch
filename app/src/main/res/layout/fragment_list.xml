@@ -53,16 +53,33 @@
             app:layout_constraintBottom_toBottomOf="parent"
             />
 
+        <!--LISTS: Loading State (Shimmer)-->
+        <include
+            android:id="@+id/listsShimmer"
+            layout="@layout/shimmer_multi_large_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnBack"
+            />
+
+        <!--LISTS: Error State-->
         <include
             android:id="@+id/empty"
             layout="@layout/layout_empty"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
             android:visibility="gone"
-            app:layout_constraintStart_toStartOf="@id/rvItems"
-            app:layout_constraintEnd_toEndOf="@id/rvItems"
-            app:layout_constraintTop_toTopOf="@id/rvItems"
-            app:layout_constraintBottom_toBottomOf="@id/rvItems"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnBack"
+            app:layout_constraintBottom_toBottomOf="parent"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

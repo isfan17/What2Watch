@@ -2,8 +2,6 @@ package com.isfandroid.whattowatch.core.data.source.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
-import com.isfandroid.whattowatch.core.data.source.remote.response.general.GenreResponse
 
 @Entity(tableName = "multi")
 data class MultiEntity (

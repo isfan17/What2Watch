@@ -3,7 +3,7 @@ package com.isfandroid.whattowatch.feature.list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import com.isfandroid.whattowatch.core.data.source.remote.response.general.MultiResponse
+import com.isfandroid.whattowatch.core.domain.model.Multi
 import com.isfandroid.whattowatch.core.domain.usecase.list.ListUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,8 +11,8 @@ import kotlinx.coroutines.launch
 
 class ListViewModel(private val useCase: ListUseCase): ViewModel() {
 
-    private val _multiLists = MutableStateFlow<PagingData<MultiResponse>?>(null)
-    val multiLists: StateFlow<PagingData<MultiResponse>?> = _multiLists
+    private val _multiLists = MutableStateFlow<PagingData<Multi>?>(null)
+    val multiLists: StateFlow<PagingData<Multi>?> = _multiLists
 
     fun getTrendingThisWeekPaging() {
         viewModelScope.launch {

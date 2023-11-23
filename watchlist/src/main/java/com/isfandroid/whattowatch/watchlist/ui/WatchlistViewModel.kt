@@ -1,4 +1,4 @@
-package com.isfandroid.whattowatch.feature.watchlist
+package com.isfandroid.whattowatch.watchlist.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

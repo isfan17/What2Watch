@@ -35,6 +35,10 @@ class HomeViewModel(private val useCase: HomeUseCase): ViewModel() {
     private val _topRatedTVShows = MutableStateFlow<Status<List<Multi>>?>(null)
     val topRatedTVShows: StateFlow<Status<List<Multi>>?> = _topRatedTVShows
 
+    // Error State
+    private val _hasError = MutableStateFlow<Boolean?>(null)
+    val hasError: StateFlow<Boolean?> = _hasError
+
     fun getTrendingMulti() {
         viewModelScope.launch {
             useCase.getTrendingThisWeek().collect {
@@ -89,5 +93,17 @@ class HomeViewModel(private val useCase: HomeUseCase): ViewModel() {
                 _topRatedTVShows.value = it
             }
         }
+    }
+
+    fun checkForErrors() {
+        _hasError.value = listOf(
+            _trendingMulti,
+            _nowPlayingMovies,
+            _upcomingMovies,
+            _popularMovies,
+            _topRatedMovies,
+            _popularTVShows,
+            _topRatedTVShows
+        ).any { it.value is Status.Error }
     }
 }

@@ -1,4 +1,4 @@
-package com.isfandroid.whattowatch.feature.watchlist
+package com.isfandroid.whattowatch.watchlist.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -16,11 +16,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.isfandroid.whattowatch.R
 import com.isfandroid.whattowatch.core.data.Status
-import com.isfandroid.whattowatch.databinding.FragmentWatchlistBinding
 import com.isfandroid.whattowatch.feature.adapter.MultiLargeAdapter
+import com.isfandroid.whattowatch.watchlist.databinding.FragmentWatchlistBinding
+import com.isfandroid.whattowatch.watchlist.di.watchlistModule
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.GlobalContext.loadKoinModules
 
 class WatchlistFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
@@ -54,6 +56,7 @@ class WatchlistFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loadKoinModules(watchlistModule)
 
         initScreen()
         initData()
@@ -72,7 +75,7 @@ class WatchlistFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             watchlistCategoriesPopup.setAdapter(
                 ArrayAdapter<Any?>(
                     requireContext(),
-                    R.layout.item_watchlist_category,
+                    com.isfandroid.whattowatch.watchlist.R.layout.item_watchlist_category,
                     arrayOf(
                         getString(R.string.txt_all),
                         getString(R.string.txt_movies),

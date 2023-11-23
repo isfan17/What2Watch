@@ -2,7 +2,6 @@ package com.isfandroid.whattowatch.core.data.source.local.converters
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 class StringListTypeConverter {
 

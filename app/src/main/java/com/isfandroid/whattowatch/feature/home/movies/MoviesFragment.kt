@@ -17,7 +17,6 @@ import com.isfandroid.whattowatch.feature.adapter.MultiSmallAdapter
 import com.isfandroid.whattowatch.feature.home.HomeFragmentDirections
 import com.isfandroid.whattowatch.feature.home.HomeViewModel
 import com.isfandroid.whattowatch.core.utils.Constants
-import com.isfandroid.whattowatch.core.utils.Helper.showToast
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -168,8 +167,6 @@ class MoviesFragment: Fragment() {
 
                                     binding.nowPlayingError.tvTitle.text = getString(R.string.txt_msg_unable_to_load_newest_data, "Now Playing Movies")
                                     binding.nowPlayingError.ivIllustration.setImageResource(R.drawable.illustration_no_connection)
-                                } else {
-                                    showToast(getString(R.string.txt_msg_unable_to_load_newest_data, "Now Playing Movies"))
                                 }
                             }
                             is Status.Success -> {
@@ -189,6 +186,7 @@ class MoviesFragment: Fragment() {
                                 binding.nowPlayingError.ivIllustration.setImageResource(R.drawable.illustration_empty_data)
                             }
                         }
+                        viewModel.checkForErrors()
                     }
                 }
 
@@ -207,8 +205,6 @@ class MoviesFragment: Fragment() {
 
                                     binding.upcomingError.tvTitle.text = getString(R.string.txt_msg_unable_to_load_newest_data, "Upcoming Movies")
                                     binding.upcomingError.ivIllustration.setImageResource(R.drawable.illustration_no_connection)
-                                } else {
-                                    showToast(getString(R.string.txt_msg_unable_to_load_newest_data, "Upcoming Movies"))
                                 }
                             }
                             is Status.Success -> {
@@ -228,6 +224,7 @@ class MoviesFragment: Fragment() {
                                 binding.upcomingError.ivIllustration.setImageResource(R.drawable.illustration_empty_data)
                             }
                         }
+                        viewModel.checkForErrors()
                     }
                 }
 
@@ -246,8 +243,6 @@ class MoviesFragment: Fragment() {
 
                                     binding.popularError.tvTitle.text = getString(R.string.txt_msg_unable_to_load_newest_data, "Popular Movies")
                                     binding.popularError.ivIllustration.setImageResource(R.drawable.illustration_no_connection)
-                                } else {
-                                    showToast(getString(R.string.txt_msg_unable_to_load_newest_data, "Popular Movies"))
                                 }
                             }
                             is Status.Success -> {
@@ -267,6 +262,7 @@ class MoviesFragment: Fragment() {
                                 binding.popularError.ivIllustration.setImageResource(R.drawable.illustration_empty_data)
                             }
                         }
+                        viewModel.checkForErrors()
                     }
                 }
 
@@ -285,8 +281,6 @@ class MoviesFragment: Fragment() {
 
                                     binding.topRatedError.tvTitle.text = getString(R.string.txt_msg_unable_to_load_newest_data, "Top Rated Movies")
                                     binding.topRatedError.ivIllustration.setImageResource(R.drawable.illustration_no_connection)
-                                } else {
-                                    showToast(getString(R.string.txt_msg_unable_to_load_newest_data, "Top Rated Movies"))
                                 }
                             }
                             is Status.Success -> {
@@ -306,6 +300,7 @@ class MoviesFragment: Fragment() {
                                 binding.topRatedError.ivIllustration.setImageResource(R.drawable.illustration_empty_data)
                             }
                         }
+                        viewModel.checkForErrors()
                     }
                 }
             }
