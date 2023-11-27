@@ -5,7 +5,6 @@ import com.isfandroid.whattowatch.core.di.databaseModule
 import com.isfandroid.whattowatch.core.di.networkModule
 import com.isfandroid.whattowatch.core.di.repositoryModule
 import com.isfandroid.whattowatch.di.useCaseModule
-import com.isfandroid.whattowatch.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -30,7 +29,6 @@ class BaseApplication: Application() {
                     networkModule,
                     repositoryModule,
                     useCaseModule,
-                    viewModelModule
                 )
             )
         }

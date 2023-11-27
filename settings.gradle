@@ -16,3 +16,7 @@ rootProject.name = "What To Watch"
 include ':app'
 include ':core'
 include ':watchlist'
+include ':home'
+include ':search'
+include ':detail'
+include ':list'
