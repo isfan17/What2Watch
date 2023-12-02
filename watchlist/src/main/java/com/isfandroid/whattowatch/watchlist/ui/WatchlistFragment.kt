@@ -14,9 +14,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.isfandroid.whattowatch.R
+import com.isfandroid.core.R
 import com.isfandroid.whattowatch.core.data.Status
-import com.isfandroid.whattowatch.feature.adapter.MultiLargeAdapter
+import com.isfandroid.whattowatch.core.ui.adapter.MultiLargeAdapter
 import com.isfandroid.whattowatch.watchlist.databinding.FragmentWatchlistBinding
 import com.isfandroid.whattowatch.watchlist.di.watchlistModule
 import kotlinx.coroutines.flow.collectLatest

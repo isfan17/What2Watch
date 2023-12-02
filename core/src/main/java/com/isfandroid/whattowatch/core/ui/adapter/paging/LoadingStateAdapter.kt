@@ -1,4 +1,4 @@
-package com.isfandroid.whattowatch.feature.adapter.paging
+package com.isfandroid.whattowatch.core.ui.adapter.paging
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,8 @@ import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.isfandroid.core.R
 import com.isfandroid.core.databinding.ItemLoadingPagingBinding
-import com.isfandroid.whattowatch.R
 
 class LoadingStateAdapter(
     private val retry: () -> Unit

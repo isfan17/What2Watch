@@ -12,9 +12,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.isfandroid.whattowatch.R
-import com.isfandroid.whattowatch.feature.adapter.paging.LoadingStateAdapter
-import com.isfandroid.whattowatch.feature.adapter.paging.MultiLargePagingAdapter
+import com.isfandroid.whattowatch.core.ui.adapter.paging.LoadingStateAdapter
+import com.isfandroid.whattowatch.core.ui.adapter.paging.MultiLargePagingAdapter
+import com.isfandroid.core.R
 import com.isfandroid.whattowatch.search.databinding.FragmentSearchBinding
 import com.isfandroid.whattowatch.search.di.searchModule
 import kotlinx.coroutines.launch

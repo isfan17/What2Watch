@@ -12,10 +12,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.isfandroid.whattowatch.R
+import com.isfandroid.core.R
 import com.isfandroid.whattowatch.core.data.Status
 import com.isfandroid.whattowatch.home.ui.adapter.HomeFragmentsAdapter
-import com.isfandroid.whattowatch.feature.adapter.MultiSmallAdapter
+import com.isfandroid.whattowatch.core.ui.adapter.MultiSmallAdapter
 import com.isfandroid.whattowatch.core.utils.Constants
 import com.isfandroid.whattowatch.home.databinding.FragmentHomeBinding
 import com.isfandroid.whattowatch.home.di.homeModule

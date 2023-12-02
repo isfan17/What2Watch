@@ -85,7 +85,7 @@
                     android:contentDescription="@string/txt_share"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:icon="@drawable/ic_round"
+                    app:icon="@drawable/ic_share"
                     />
 
                 <com.google.android.material.card.MaterialCardView

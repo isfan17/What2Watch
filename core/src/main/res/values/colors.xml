@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Theme Colors-->
-    <color name="seed">#007F9F</color>
     <color name="md_theme_light_primary">#006781</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#BAEAFF</color>
@@ -28,29 +27,20 @@
     <color name="md_theme_light_inverseOnSurface">#C3FBFF</color>
     <color name="md_theme_light_inverseSurface">#00373A</color>
     <color name="md_theme_light_inversePrimary">#5FD4FD</color>
-    <color name="md_theme_light_shadow">#000000</color>
-    <color name="md_theme_light_surfaceTint">#006781</color>
-    <color name="md_theme_light_outlineVariant">#C0C8CC</color>
-    <color name="md_theme_light_scrim">#000000</color>
 
     <!--B&W-->
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey_500">#9E9E9E</color>
     <color name="dark_500">#0e1621</color>
 
     <!--Danger-->
     <color name="danger_main">#E84343</color>
-    <color name="danger_border">#FF9B9B</color>
     <color name="danger_surface">#FFE0E0</color>
 
     <!--Success-->
     <color name="success_main">#169B69</color>
-    <color name="success_border">#45AF87</color>
-    <color name="success_surface">#A2D7C3</color>
 
     <!--Warning-->
     <color name="warning_main">#FCC148</color>
     <color name="warning_border">#FFD172</color>
-    <color name="warning_surface">#FFF2D9</color>
 </resources>

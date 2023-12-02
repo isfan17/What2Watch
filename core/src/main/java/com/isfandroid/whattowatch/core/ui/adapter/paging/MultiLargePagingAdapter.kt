@@ -1,4 +1,4 @@
-package com.isfandroid.whattowatch.feature.adapter.paging
+package com.isfandroid.whattowatch.core.ui.adapter.paging
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,8 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.isfandroid.core.R
 import com.isfandroid.core.databinding.ItemMultiLargeBinding
-import com.isfandroid.whattowatch.R
 import com.isfandroid.whattowatch.core.domain.model.Multi
 import com.isfandroid.whattowatch.core.utils.Constants
 
