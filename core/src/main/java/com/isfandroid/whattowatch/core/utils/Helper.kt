@@ -7,7 +7,7 @@ object Helper {
 
     // SHOW TOAST FUNCTION FOR FRAGMENT
     fun Fragment.showToast(msg: String) {
-        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireActivity().applicationContext, msg, Toast.LENGTH_SHORT).show()
     }
 
     // CONVERT MINUTES IN INTEGER TO STRING

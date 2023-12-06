@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <!--ITEM 1-->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                >
+
+                <View
+                    android:id="@+id/ivCover1"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <View
+                    android:id="@+id/tvYear1"
+                    android:layout_width="48dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toTopOf="@id/tvTitle1"
+                    app:layout_constraintStart_toEndOf="@id/ivCover1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    />
+
+                <View
+                    android:id="@+id/tvTitle1"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toTopOf="@id/tvRating1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvYear1"
+                    app:layout_constraintTop_toBottomOf="@id/tvYear1"
+                    />
+
+                <View
+                    android:id="@+id/tvRating1"
+                    android:layout_width="56dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvYear1"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle1"
+                    />
+
+                <View
+                    android:id="@+id/tvMediaType1"
+                    android:layout_width="56dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toBottomOf="@id/tvRating1"
+                    app:layout_constraintStart_toEndOf="@id/tvRating1"
+                    app:layout_constraintTop_toTopOf="@id/tvRating1"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--ITEM 2-->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                >
+
+                <View
+                    android:id="@+id/ivCover2"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <View
+                    android:id="@+id/tvYear2"
+                    android:layout_width="48dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toTopOf="@id/tvTitle2"
+                    app:layout_constraintStart_toEndOf="@id/ivCover2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    />
+
+                <View
+                    android:id="@+id/tvTitle2"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toTopOf="@id/tvRating2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvYear2"
+                    app:layout_constraintTop_toBottomOf="@id/tvYear2"
+                    />
+
+                <View
+                    android:id="@+id/tvRating2"
+                    android:layout_width="56dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvYear2"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle2"
+                    />
+
+                <View
+                    android:id="@+id/tvMediaType2"
+                    android:layout_width="56dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toBottomOf="@id/tvRating2"
+                    app:layout_constraintStart_toEndOf="@id/tvRating2"
+                    app:layout_constraintTop_toTopOf="@id/tvRating2"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--ITEM 3-->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                >
+
+                <View
+                    android:id="@+id/ivCover3"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <View
+                    android:id="@+id/tvYear3"
+                    android:layout_width="48dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toTopOf="@id/tvTitle3"
+                    app:layout_constraintStart_toEndOf="@id/ivCover3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    />
+
+                <View
+                    android:id="@+id/tvTitle3"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toTopOf="@id/tvRating3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvYear3"
+                    app:layout_constraintTop_toBottomOf="@id/tvYear3"
+                    />
+
+                <View
+                    android:id="@+id/tvRating3"
+                    android:layout_width="56dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvYear3"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle3"
+                    />
+
+                <View
+                    android:id="@+id/tvMediaType3"
+                    android:layout_width="56dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toBottomOf="@id/tvRating3"
+                    app:layout_constraintStart_toEndOf="@id/tvRating3"
+                    app:layout_constraintTop_toTopOf="@id/tvRating3"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--ITEM 4-->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                >
+
+                <View
+                    android:id="@+id/ivCover4"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <View
+                    android:id="@+id/tvYear4"
+                    android:layout_width="48dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toTopOf="@id/tvTitle4"
+                    app:layout_constraintStart_toEndOf="@id/ivCover4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    />
+
+                <View
+                    android:id="@+id/tvTitle4"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toTopOf="@id/tvRating4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvYear4"
+                    app:layout_constraintTop_toBottomOf="@id/tvYear4"
+                    />
+
+                <View
+                    android:id="@+id/tvRating4"
+                    android:layout_width="56dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvYear4"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle4"
+                    />
+
+                <View
+                    android:id="@+id/tvMediaType4"
+                    android:layout_width="56dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_rounded_grey"
+                    app:layout_constraintBottom_toBottomOf="@id/tvRating4"
+                    app:layout_constraintStart_toEndOf="@id/tvRating4"
+                    app:layout_constraintTop_toTopOf="@id/tvRating4"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</com.facebook.shimmer.ShimmerFrameLayout>

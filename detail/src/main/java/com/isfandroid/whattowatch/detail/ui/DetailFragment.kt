@@ -17,12 +17,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
-import com.isfandroid.core.R
 import com.isfandroid.whattowatch.core.data.Status
 import com.isfandroid.whattowatch.core.domain.model.Multi
 import com.isfandroid.whattowatch.core.utils.Constants
 import com.isfandroid.whattowatch.core.utils.Helper
 import com.isfandroid.whattowatch.core.utils.Helper.showToast
+import com.isfandroid.whattowatch.detail.R
 import com.isfandroid.whattowatch.detail.databinding.FragmentDetailBinding
 import com.isfandroid.whattowatch.detail.databinding.PopupYoutubePlayerBinding
 import com.isfandroid.whattowatch.detail.di.detailModule

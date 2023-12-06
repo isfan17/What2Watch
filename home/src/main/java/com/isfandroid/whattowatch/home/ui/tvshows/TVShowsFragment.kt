@@ -10,11 +10,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.isfandroid.core.R
 import com.isfandroid.whattowatch.core.data.Status
 import com.isfandroid.whattowatch.core.ui.adapter.MultiSmallAdapter
 import com.isfandroid.whattowatch.home.ui.HomeViewModel
 import com.isfandroid.whattowatch.core.utils.Constants
+import com.isfandroid.whattowatch.home.R
 import com.isfandroid.whattowatch.home.databinding.FragmentTvShowsBinding
 import com.isfandroid.whattowatch.home.ui.HomeFragmentDirections
 import kotlinx.coroutines.flow.collectLatest
@@ -187,6 +187,9 @@ class TVShowsFragment: Fragment() {
 
     private fun showPopularTVShowsLoading(state: Boolean) {
         if (state) {
+            binding.popularRV.root.visibility = View.GONE
+            binding.popularError.root.visibility = View.GONE
+
             binding.popularShimmer.root.visibility = View.VISIBLE
             binding.popularShimmer.root.startShimmer()
         } else {
@@ -197,6 +200,9 @@ class TVShowsFragment: Fragment() {
 
     private fun showTopRatedTVShowsLoading(state: Boolean) {
         if (state) {
+            binding.topRatedRV.root.visibility = View.GONE
+            binding.topRatedError.root.visibility = View.GONE
+
             binding.topRatedShimmer.root.visibility = View.VISIBLE
             binding.topRatedShimmer.root.startShimmer()
         } else {

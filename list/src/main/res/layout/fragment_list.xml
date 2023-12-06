@@ -56,7 +56,7 @@
         <!--LISTS: Loading State (Shimmer)-->
         <include
             android:id="@+id/listsShimmer"
-            layout="@layout/shimmer_multi_large_list"
+            layout="@layout/list_shimmer_multi_large_list"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"

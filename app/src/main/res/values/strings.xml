@@ -1,13 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">What2Watch</string>
 
     <string name="title_home">Home</string>
     <string name="title_watchlist">Watchlist</string>
     <string name="title_search">Search</string>
-    <string name="title_detail">Detail</string>
-    <string name="title_list">List</string>
-
-    <string name="txt_home">Home</string>
-    <string name="txt_search">Search</string>
-    <string name="txt_watchlist">Watchlist</string>
+    <string name="title_detail" tools:keep="@string/title_detail">Detail</string>
+    <string name="title_list" tools:keep="@string/title_list">List</string>
 </resources>

@@ -4,15 +4,15 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
-        android:title="@string/txt_home" />
+        android:title="@string/title_home" />
 
     <item
         android:id="@+id/searchFragment"
         android:icon="@drawable/ic_search"
-        android:title="@string/txt_search" />
+        android:title="@string/title_search" />
 
     <item
         android:id="@+id/watchlistFragment"
         android:icon="@drawable/ic_watchlist"
-        android:title="@string/txt_watchlist" />
+        android:title="@string/title_watchlist" />
 </menu>

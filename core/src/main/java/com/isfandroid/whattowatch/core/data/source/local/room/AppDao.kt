@@ -1,8 +1,9 @@
 package com.isfandroid.whattowatch.core.data.source.local.room
 
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Upsert
 import com.isfandroid.whattowatch.core.data.source.local.entity.MultiEntity
 import com.isfandroid.whattowatch.core.data.source.local.entity.TrailerEntity
 import com.isfandroid.whattowatch.core.utils.Constants
@@ -12,10 +13,10 @@ import kotlinx.coroutines.flow.Flow
 interface AppDao {
 
     /** region General **/
-    @Upsert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertMulties(multi: List<MultiEntity>)
 
-    @Upsert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertMulti(multi: MultiEntity)
 
     @Query("SELECT * FROM multi WHERE isTrending = 1")
@@ -51,7 +52,7 @@ interface AppDao {
     @Query("UPDATE multi SET isOnWatchlist = 0 WHERE id = :id")
     suspend fun removeMultiFromWatchlist(id: Int)
 
-    @Upsert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertTrailers(trailers: List<TrailerEntity>)
 
     @Query("SELECT * FROM trailers WHERE multiId = :id")

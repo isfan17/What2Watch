@@ -14,9 +14,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.isfandroid.core.R
 import com.isfandroid.whattowatch.core.data.Status
 import com.isfandroid.whattowatch.core.ui.adapter.MultiLargeAdapter
+import com.isfandroid.whattowatch.watchlist.R
 import com.isfandroid.whattowatch.watchlist.databinding.FragmentWatchlistBinding
 import com.isfandroid.whattowatch.watchlist.di.watchlistModule
 import kotlinx.coroutines.flow.collectLatest
@@ -75,7 +75,7 @@ class WatchlistFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             watchlistCategoriesPopup.setAdapter(
                 ArrayAdapter<Any?>(
                     requireContext(),
-                    com.isfandroid.whattowatch.watchlist.R.layout.item_watchlist_category,
+                    R.layout.item_watchlist_category,
                     arrayOf(
                         getString(R.string.txt_all),
                         getString(R.string.txt_movies),
@@ -98,8 +98,11 @@ class WatchlistFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun initData() {
-        // Watchlist Multi
-        viewModel.getOnWatchlistMulti()
+        when (binding.tvCategory.text) {
+            getString(R.string.txt_movies) -> viewModel.getOnWatchlistMovies()
+            getString(R.string.txt_tv_shows) -> viewModel.getOnWatchlistTVShows()
+            else -> viewModel.getOnWatchlistMulti()
+        }
     }
 
     private fun observeData() {

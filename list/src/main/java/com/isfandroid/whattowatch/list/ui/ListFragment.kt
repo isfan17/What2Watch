@@ -13,10 +13,10 @@ import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.isfandroid.core.R
 import com.isfandroid.whattowatch.core.ui.adapter.paging.MultiLargePagingAdapter
 import com.isfandroid.whattowatch.core.utils.Constants
 import com.isfandroid.whattowatch.core.ui.adapter.paging.LoadingStateAdapter
+import com.isfandroid.whattowatch.list.R
 import com.isfandroid.whattowatch.list.databinding.FragmentListBinding
 import com.isfandroid.whattowatch.list.di.listModule
 import kotlinx.coroutines.flow.collectLatest

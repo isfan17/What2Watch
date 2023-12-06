@@ -14,7 +14,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.isfandroid.whattowatch.core.ui.adapter.paging.LoadingStateAdapter
 import com.isfandroid.whattowatch.core.ui.adapter.paging.MultiLargePagingAdapter
-import com.isfandroid.core.R
+import com.isfandroid.whattowatch.search.R
 import com.isfandroid.whattowatch.search.databinding.FragmentSearchBinding
 import com.isfandroid.whattowatch.search.di.searchModule
 import kotlinx.coroutines.launch

@@ -1,98 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <!--POPULAR-->
+    <LinearLayout
+        android:id="@+id/llPopular"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         >
-
-        <!--POPULAR-->
-        <LinearLayout
-            android:id="@+id/llPopular"
-            android:layout_width="0dp"
+        <!--POPULAR: Loading State (Shimmer)-->
+        <include
+            android:id="@+id/popularShimmer"
+            layout="@layout/home_shimmer_multi_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
-            <!--POPULAR: Loading State (Shimmer)-->
-            <include
-                android:id="@+id/popularShimmer"
-                layout="@layout/shimmer_multi_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-            <!--POPULAR: RecyclerView-->
-            <include
-                android:id="@+id/popularRV"
-                layout="@layout/layout_rv_with_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                />
-            <!--POPULAR: Error State-->
-            <include
-                android:id="@+id/popularError"
-                layout="@layout/layout_empty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                />
-        </LinearLayout>
-
-        <!--TOP RATED-->
-        <LinearLayout
-            android:id="@+id/llTopRated"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llPopular"
-            >
-            <!--TOP RATED: Loading State (Shimmer)-->
-            <include
-                android:id="@+id/topRatedShimmer"
-                layout="@layout/shimmer_multi_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-            <!--TOP RATED: RecyclerView-->
-            <include
-                android:id="@+id/topRatedRV"
-                layout="@layout/layout_rv_with_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                />
-            <!--TOP RATED: Error State-->
-            <include
-                android:id="@+id/topRatedError"
-                layout="@layout/layout_empty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                />
-        </LinearLayout>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llTopRated"
             />
+        <!--POPULAR: RecyclerView-->
+        <include
+            android:id="@+id/popularRV"
+            layout="@layout/layout_rv_with_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+        <!--POPULAR: Error State-->
+        <include
+            android:id="@+id/popularError"
+            layout="@layout/layout_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--TOP RATED-->
+    <LinearLayout
+        android:id="@+id/llTopRated"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llPopular"
+        >
+        <!--TOP RATED: Loading State (Shimmer)-->
+        <include
+            android:id="@+id/topRatedShimmer"
+            layout="@layout/home_shimmer_multi_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <!--TOP RATED: RecyclerView-->
+        <include
+            android:id="@+id/topRatedRV"
+            layout="@layout/layout_rv_with_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+        <!--TOP RATED: Error State-->
+        <include
+            android:id="@+id/topRatedError"
+            layout="@layout/layout_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+    </LinearLayout>
 
-</ScrollView>
+    <!--INVISIBLE SPACE 1-->
+    <LinearLayout
+        android:id="@+id/llInvisible1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llTopRated"
+        >
+        <!--INVISIBLE: Loading State (Shimmer)-->
+        <include
+            android:id="@+id/invisible1Shimmer"
+            layout="@layout/home_shimmer_multi_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <!--INVISIBLE SPACE 1-->
+    <LinearLayout
+        android:id="@+id/llInvisible2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llInvisible1"
+        >
+        <!--INVISIBLE: Loading State (Shimmer)-->
+        <include
+            android:id="@+id/invisible2Shimmer"
+            layout="@layout/home_shimmer_multi_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llInvisible2"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

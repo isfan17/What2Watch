@@ -10,11 +10,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.isfandroid.core.R
 import com.isfandroid.whattowatch.core.data.Status
 import com.isfandroid.whattowatch.core.ui.adapter.MultiSmallAdapter
 import com.isfandroid.whattowatch.home.ui.HomeViewModel
 import com.isfandroid.whattowatch.core.utils.Constants
+import com.isfandroid.whattowatch.home.R
 import com.isfandroid.whattowatch.home.databinding.FragmentMoviesBinding
 import com.isfandroid.whattowatch.home.ui.HomeFragmentDirections
 import kotlinx.coroutines.flow.collectLatest

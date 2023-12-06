@@ -12,11 +12,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.isfandroid.core.R
 import com.isfandroid.whattowatch.core.data.Status
 import com.isfandroid.whattowatch.home.ui.adapter.HomeFragmentsAdapter
 import com.isfandroid.whattowatch.core.ui.adapter.MultiSmallAdapter
 import com.isfandroid.whattowatch.core.utils.Constants
+import com.isfandroid.whattowatch.home.R
 import com.isfandroid.whattowatch.home.databinding.FragmentHomeBinding
 import com.isfandroid.whattowatch.home.di.homeModule
 import kotlinx.coroutines.flow.collectLatest
@@ -31,7 +31,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private val viewModel: HomeViewModel by viewModel()
 
-    private lateinit var fragmentsAdapter: HomeFragmentsAdapter
+    private var fragmentsAdapter: HomeFragmentsAdapter? = null
 
     private val multiAdapter by lazy {
         MultiSmallAdapter(
@@ -186,6 +186,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        fragmentsAdapter = null
         _binding = null
     }
 }

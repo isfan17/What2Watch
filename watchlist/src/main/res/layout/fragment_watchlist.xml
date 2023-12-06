@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:layout_marginStart="16dp"
-            android:text="@string/txt_watchlist_categories"
+            android:text="@string/txt_watchlist_category"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
         <!--WATCHLIST: Loading State (Shimmer)-->
         <include
             android:id="@+id/watchlistMultiShimmer"
-            layout="@layout/shimmer_multi_large_list"
+            layout="@layout/watchlist_shimmer_multi_large_list"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
