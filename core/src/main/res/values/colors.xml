@@ -2,4 +2,6 @@
 <resources>
     <color name="white">#FFFFFFFF</color>
     <color name="grey_500">#9E9E9E</color>
+    <color name="warning_border">#FFD172</color>
+    <color name="success_main">#169B69</color>
 </resources>
