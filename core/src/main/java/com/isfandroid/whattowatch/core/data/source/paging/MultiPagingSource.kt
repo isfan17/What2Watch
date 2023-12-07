@@ -26,22 +26,34 @@ class MultiPagingSource(
                     remoteDataSource.getTrendingThisWeekPaging(page = position).results
                 }
                 Constants.NOW_PLAYING_MOVIES -> {
-                    remoteDataSource.getNowPlayingMoviesPaging(page = position).results
+                    remoteDataSource.getNowPlayingMoviesPaging(page = position).results.apply {
+                        this.map { it.mediaType = Constants.MEDIA_TYPE_MOVIE }
+                    }
                 }
                 Constants.UPCOMING_MOVIES -> {
-                    remoteDataSource.getUpcomingMoviesPaging(page = position).results
+                    remoteDataSource.getUpcomingMoviesPaging(page = position).results.apply {
+                        this.map { it.mediaType = Constants.MEDIA_TYPE_MOVIE }
+                    }
                 }
                 Constants.POPULAR_MOVIES -> {
-                    remoteDataSource.getPopularMoviesPaging(page = position).results
+                    remoteDataSource.getPopularMoviesPaging(page = position).results.apply {
+                        this.map { it.mediaType = Constants.MEDIA_TYPE_MOVIE }
+                    }
                 }
                 Constants.TOP_RATED_MOVIES -> {
-                    remoteDataSource.getTopRatedMoviesPaging(page = position).results
+                    remoteDataSource.getTopRatedMoviesPaging(page = position).results.apply {
+                        this.map { it.mediaType = Constants.MEDIA_TYPE_MOVIE }
+                    }
                 }
                 Constants.POPULAR_TV_SHOWS -> {
-                    remoteDataSource.getPopularTVShowsPaging(page = position).results
+                    remoteDataSource.getPopularTVShowsPaging(page = position).results.apply {
+                        this.map { it.mediaType = Constants.MEDIA_TYPE_TV_SHOW }
+                    }
                 }
                 Constants.TOP_RATED_TV_SHOWS -> {
-                    remoteDataSource.getTopRatedTVShowsPaging(page = position).results
+                    remoteDataSource.getTopRatedTVShowsPaging(page = position).results.apply {
+                        this.map { it.mediaType = Constants.MEDIA_TYPE_TV_SHOW }
+                    }
                 }
                 // SEARCH MULTI
                 else -> {
@@ -56,7 +68,7 @@ class MultiPagingSource(
             LoadResult.Page(
                 data = mappedResponse,
                 prevKey = if (position == INITIAL_PAGE_INDEX) null else position - 1,
-                nextKey = if (mappedResponse.isNullOrEmpty()) null else position + 1
+                nextKey = if (mappedResponse.isEmpty()) null else position + 1
             )
         } catch (exception: Exception) {
             return LoadResult.Error(exception)

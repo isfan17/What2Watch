@@ -8,7 +8,7 @@ data class MultiResponse (
     val id: Int,
 
     @field:SerializedName("media_type")
-    val mediaType: String?,
+    var mediaType: String?,
 
     @field:SerializedName("backdrop_path")
     val backdropPath: String?,
